@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Execute') {
             steps {
-                sh 'mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=8081"'
+                sh 'mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=8082"'
             }
         }
     }
