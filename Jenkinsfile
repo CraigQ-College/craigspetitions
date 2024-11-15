@@ -38,6 +38,7 @@ pipeline {
              artifacts:'**/craigspetitions*.war'
      }
     }
+    
 }
 
 
