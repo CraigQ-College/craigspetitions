@@ -1,22 +1,30 @@
 pipeline {
     agent any
-    
-    tools {
+    tools{
         git 'Default'
     }
-
     stages {
-        stage('GetProject') {
+        stage ('GetProject') {
             steps {
-                git branch: 'master', url:'https://github.com/CraigQ-College/craigspetitions.git'
+                git branch:'main', url:'https://github.com/CraigQ-College/CT5171-MavinTest1.git'
             }
         }
-        stage('Build') {
+        stage ('build') {
             steps {
                 sh 'mvn clean:clean'
                 sh 'mvn dependency:copy-dependencies'
                 sh 'mvn compiler:compile'
-               }
+            }
+        }
+        stage ('test') {
+            steps {
+                sh 'mvn test:test'
+            }
+        }
+        stage ('Package') {
+            steps {
+                sh 'mvn package'
+            }
         }
         stage('Execute') {
             steps {
@@ -24,4 +32,12 @@ pipeline {
             }
         }
     }
+    post{
+     success{
+         archiveArtifacts allowEmptyArchive: true,
+             artifacts:'**/craigspetitions*.war'
+     }
+    }
 }
+
+
