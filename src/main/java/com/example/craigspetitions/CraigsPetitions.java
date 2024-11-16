@@ -29,7 +29,7 @@ public class CraigsPetitions {
     }
 
     // Mapping to handle the form submission to save a new petition
-    @PostMapping("/craigspetitions/savePetition")
+    @PostMapping("/savePetition")
     public String savePetition(@RequestParam String title, @RequestParam String description) {
         // Add the new petition to the list
         petitions.add(new Petition(title, description));
@@ -37,7 +37,7 @@ public class CraigsPetitions {
         return "redirect:/craigspetitions/";
     }
 
-    @GetMapping("/craigspetitions/viewPetition/{title}")
+    @GetMapping("/viewPetition/{title}")
     public String viewPetition(@PathVariable String title, Model model) {
         Petition petition = petitions.stream()
                 .filter(p -> p.getTitle().equals(title))
@@ -47,13 +47,13 @@ public class CraigsPetitions {
         return "viewPetition";
     }
 
-    @GetMapping("/craigspetitions/signPetition/{title}")
+    @GetMapping("/signPetition/{title}")
     public String signPetition(@PathVariable String title, Model model) {
         model.addAttribute("title", title);
         return "signPetition";
     }
 
-    @PostMapping("/craigspetitions/submitSignature")
+    @PostMapping("/submitSignature")
     public String submitSignature(@RequestParam String title, @RequestParam String name) {
         Petition petition = petitions.stream()
                 .filter(p -> p.getTitle().equals(title))
