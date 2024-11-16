@@ -23,7 +23,7 @@ public class CraigsPetitions {
 
     @GetMapping("/")
     public String showAllPetitions() {
-        return "allPetitions";
+        return "allPetitions.html";
     }
 
     // Creating the mapping for the create petition form.
