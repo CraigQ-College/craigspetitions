@@ -12,21 +12,26 @@
         <h1>All Petitions</h1>
         <a href="/craigspetitions/createPetition" class="btn btn-success me-2">Create New Petition</a>
         <a href="/craigspetitions/search" class="btn btn-primary me-2">Search Petitions</a>
-
     </div>
 </header>
 <main class="container my-4">
-    <!-- Petition List -->
-    <ul class="list-group">
+    <!-- Petition Cards -->
+    <div class="row row-cols-1 row-cols-md-2 g-4">
         <!-- Loop through the petitions -->
-        <li th:each="petition : ${petitions}" class="list-group-item">
-            <div>
-                <h3 th:text="${petition.title}" class="mb-1">Petition Title</h3>
-                <p th:text="${petition.description}" class="mb-1">Petition Description</p>
-                <a th:href="@{/viewPetition/{title}(title=${petition.title})}" class="btn btn-primary mt-2">View Petition</a>
+        <div class="col" th:each="petition : ${petitions}">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${petition.title}">Petition Title</h5>
+                    <p class="card-text" th:text="${petition.description}">Petition Description</p>
+                    <p class="text-muted">
+                        <strong>Signatures:</strong>
+                        <span th:text="${petition.signatures.size()}">0</span>
+                    </p>
+                    <a th:href="@{/viewPetition/{title}(title=${petition.title})}" class="btn btn-primary">View Petition</a>
+                </div>
             </div>
-        </li>
-    </ul>
+        </div>
+    </div>
 </main>
 </body>
 </html>
