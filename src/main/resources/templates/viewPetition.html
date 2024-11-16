@@ -7,13 +7,26 @@
   <title>View Petition</title>
 </head>
 <body>
-<header class="bg-primary text-white py-3 text-center">
+<header class="bg-primary text-white text-center py-3">
   <h1 th:text="${petition.title}">Petition Title</h1>
 </header>
 <main class="container my-4">
-  <p th:text="${petition.description}">Petition Description</p>
-  <a th:href="@{/craigspetitions/signPetition/{title}(title=${petition.title})}" class="btn btn-success">Sign Petition</a>
-  <a href="/craigspetitions/" class="btn btn-secondary">Back to Home</a>
+  <p class="lead" th:text="${petition.description}">Petition Description</p>
+  <h3>Signatures</h3>
+  <ul class="list-group">
+    <li th:each="signature : ${petition.signatures}" class="list-group-item" th:text="${signature}">
+      Signature Name
+    </li>
+  </ul>
+  <form action="/craigspetitions/addSignature" method="POST" class="mt-4">
+    <div class="mb-3">
+      <label for="name" class="form-label">Your Name</label>
+      <input type="text" class="form-control" id="name" name="name" required>
+      <input type="hidden" name="title" th:value="${petition.title}">
+    </div>
+    <button type="submit" class="btn btn-success">Sign Petition</button>
+  </form>
+  <a href="/craigspetitions/" class="btn btn-secondary mt-3">Back to All Petitions</a>
 </main>
 </body>
 </html>

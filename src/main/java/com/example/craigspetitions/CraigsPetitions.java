@@ -37,31 +37,33 @@ public class CraigsPetitions {
         return "redirect:/";
     }
 
-    @GetMapping("/craigspetitions/viewPetition/{title}")
+    @GetMapping("/viewPetition/{title}")
     public String viewPetition(@PathVariable String title, Model model) {
-        Petition petition = petitions.stream()
-                .filter(p -> p.getTitle().equals(title))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Petition not found"));
-        model.addAttribute("petition", petition);
-        return "viewPetition";
+        // Find the petition with the matching title
+        for (Petition petition : petitions) {
+            if (petition.getTitle().equalsIgnoreCase(title)) {
+                model.addAttribute("petition", petition);
+                return "viewPetition";
+            }
+        }
+        // Redirect to the home page if the petition is not found
+        return "redirect:/";
     }
 
-    @GetMapping("/craigspetitions/signPetition/{title}")
-    public String signPetition(@PathVariable String title, Model model) {
-        model.addAttribute("title", title);
-        return "signPetition";
+    @PostMapping("/addSignature")
+    public String addSignature(@RequestParam String title, @RequestParam String name) {
+        // Find the petition and add the signature
+        for (Petition petition : petitions) {
+            if (petition.getTitle().equalsIgnoreCase(title)) {
+                petition.addSignature(name);
+                break;
+            }
+        }
+        // Redirect back to the petition page
+        return "redirect:/viewPetition/" + title;
     }
 
-    @PostMapping("/craigspetitions/submitSignature")
-    public String submitSignature(@RequestParam String title, @RequestParam String name) {
-        Petition petition = petitions.stream()
-                .filter(p -> p.getTitle().equals(title))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Petition not found"));
-        petition.addSignature(name); // Assuming Petition has a method to add signatures
-        return "redirect:/craigspetitions/";
-    }
+
 
     public static void main(String[] args) {
         SpringApplication.run(CraigsPetitions.class, args);
