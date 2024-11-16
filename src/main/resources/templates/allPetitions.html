@@ -14,10 +14,15 @@
     </div>
 </header>
 <main class="container my-4">
+    <!-- Petition List -->
     <ul class="list-group">
+        <!-- Loop through the petitions -->
         <li th:each="petition : ${petitions}" class="list-group-item">
-            <h3 th:text="${petition.title}">Petition Title</h3>
-            <p th:text="${petition.description}">Petition Description</p>
+            <div>
+                <h3 th:text="${petition.title}" class="mb-1">Petition Title</h3>
+                <p th:text="${petition.description}" class="mb-1">Petition Description</p>
+                <a th:href="@{/craigspetitions/viewPetition/{title}(title=${petition.title})}" class="btn btn-primary mt-2">View Petition</a>
+            </div>
         </li>
     </ul>
 </main>
