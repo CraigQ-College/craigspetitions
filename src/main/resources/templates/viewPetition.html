@@ -11,8 +11,8 @@
 </header>
 <main class="container my-4">
   <p th:text="${petition.description}">Petition Description</p>
-  <a th:href="@{'/craigspetitions/signPetition/' + ${petition.title}}" class="btn btn-success">Sign Petition</a>
-  <a href="/craigspetitions/" class="btn btn-secondary">Back to Home</a>
+  <a th:href="@{'craigspetitions/signPetition/' + ${petition.title}}" class="btn btn-success">Sign Petition</a>
+  <a href="craigspetitions/" class="btn btn-secondary">Back to Home</a>
 </main>
 </body>
 </html>
