@@ -28,6 +28,15 @@ public class CraigsPetitions {
         return "createPetition";
     }
 
+    // Mapping to handle the form submission to save a new petition
+    @PostMapping("/craigspetitions/savePetition")
+    public String savePetition(@RequestParam String title, @RequestParam String description) {
+        // Add the new petition to the list
+        petitions.add(new Petition(title, description));
+        // Redirect to the home screen
+        return "redirect:/craigspetitions/";
+    }
+
     @GetMapping("/craigspetitions/viewPetition/{title}")
     public String viewPetition(@PathVariable String title, Model model) {
         Petition petition = petitions.stream()
