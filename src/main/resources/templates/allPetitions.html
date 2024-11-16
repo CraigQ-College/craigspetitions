@@ -21,7 +21,7 @@
             <div>
                 <h3 th:text="${petition.title}" class="mb-1">Petition Title</h3>
                 <p th:text="${petition.description}" class="mb-1">Petition Description</p>
-                <a th:href="@{/craigspetitions/viewPetition/{title}(title=${petition.title})}" class="btn btn-primary mt-2">View Petition</a>
+                <a th:href="@{/viewPetition/{title}(title=${petition.title})}" class="btn btn-primary mt-2">View Petition</a>
             </div>
         </li>
     </ul>
