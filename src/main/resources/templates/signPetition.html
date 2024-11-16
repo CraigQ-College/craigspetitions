@@ -10,7 +10,7 @@
   <h1 th:text="'Sign Petition: ' + ${title}">Sign Petition</h1>
 </header>
 <main class="container my-4">
-  <form th:action="@{/craigspetitions/submitSignature}" method="POST">
+  <form th:action="@{submitSignature/}" method="POST">
     <input type="hidden" name="title" th:value="${title}"/>
     <div class="mb-3">
       <label for="name" class="form-label">Your Name</label>
