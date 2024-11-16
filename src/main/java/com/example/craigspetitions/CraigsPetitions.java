@@ -4,40 +4,54 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
 @Controller
 public class CraigsPetitions {
 
-    // In-memory list to store petitions
-    private final List<Petition> petitions = List.of(
+    private List<Petition> petitions = new ArrayList<>(List.of(
             new Petition("Reduce Reuse Recycle", "Reduce plastic use, change to better alternatives"),
             new Petition("Support Clean Energy", "Join the movement for a sustainable future!")
-    );
+    ));
 
-    // Mapping for the initial landing page (/), which shows all petitions
     @GetMapping("/")
     public String showAllPetitions(Model model) {
-        model.addAttribute("petitions", petitions); // Add the list of petitions to the model
-        return "allPetitions"; // Render allPetitions.html from the templates folder
+        model.addAttribute("petitions", petitions);
+        return "allPetitions";
     }
 
-    // Mapping for the create petition form (/createPetition)
-    @GetMapping("/createPetition")
-    public String createPetitionPage() {
-        return "createPetition"; // Render createPetition.html from the templates folder
+    @GetMapping("/craigspetitions/viewPetition/{title}")
+    public String viewPetition(@PathVariable String title, Model model) {
+        Petition petition = petitions.stream()
+                .filter(p -> p.getTitle().equals(title))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Petition not found"));
+        model.addAttribute("petition", petition);
+        return "viewPetition";
     }
 
-    // Mapping for the view petition page (/viewPetition)
-    @GetMapping("/viewPetition")
-    public String viewPetitionPage() {
-        return "viewPetition"; // Render viewPetition.html from the templates folder
+    @GetMapping("/craigspetitions/signPetition/{title}")
+    public String signPetition(@PathVariable String title, Model model) {
+        model.addAttribute("title", title);
+        return "signPetition";
+    }
+
+    @PostMapping("/craigspetitions/submitSignature")
+    public String submitSignature(@RequestParam String title, @RequestParam String name) {
+        Petition petition = petitions.stream()
+                .filter(p -> p.getTitle().equals(title))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Petition not found"));
+        petition.addSignature(name); // Assuming Petition has a method to add signatures
+        return "redirect:/craigspetitions/";
     }
 
     public static void main(String[] args) {
         SpringApplication.run(CraigsPetitions.class, args);
     }
 }
+
