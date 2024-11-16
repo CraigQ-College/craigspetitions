@@ -3,20 +3,28 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+    background: url('https://thoughtfulcampaigner.org/wp-content/uploads/2018/10/petitions.jpg') no-repeat center center fixed; /* Background image */
+    background-size: cover; /* Ensure the image covers the entire background */
+    color: #333; /* Default text color */
 }
 
 /* Header */
 header {
-    background-color: #4CAF50;
+    background-color: #6C63FF; /* Soft purple for the header */
     color: white;
     padding: 1rem;
     text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
 }
 
 /* Main Content */
 main {
-    padding: 1rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9); /* Slightly opaque white background */
+    border-radius: 8px;
+    margin: 2rem auto;
+    max-width: 800px; /* Centered container */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
 }
 
 /* Petition List */
@@ -26,19 +34,21 @@ main {
 }
 
 .petition-item {
-    background: white;
+    background: #ffffff; /* White background for petition items */
     margin: 0.5rem 0;
     padding: 1rem;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .petition-item h3 {
     margin: 0 0 0.5rem;
+    color: #6C63FF; /* Header text color matching the header */
 }
 
 .petition-item p {
     margin: 0.5rem 0 0;
+    color: #555; /* Subtle text color for description */
 }
 
 /* Buttons */
@@ -47,20 +57,21 @@ main {
     padding: 0.5rem 1rem;
     margin-top: 1rem;
     color: white;
-    background-color: #007BFF;
+    background-color: #FF6F61; /* Warm red for buttons */
     text-decoration: none;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #E74C3C; /* Darker red on hover */
+    transform: translateY(-2px); /* Subtle lift effect on hover */
 }
 
 .create-btn {
-    background-color: #28a745;
+    background-color: #2ecc71; /* Green for create button */
 }
 
 .create-btn:hover {
-    background-color: #218838;
+    background-color: #27ae60; /* Darker green on hover */
 }
