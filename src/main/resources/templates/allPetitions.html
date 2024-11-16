@@ -17,7 +17,7 @@
         <!-- This button navigates the user to the "Create New Petition" page. -->
         <a href="/craigspetitions/createPetition" class="btn btn-success me-2">Create New Petition</a>
         <!-- This button navigates the user to the "Search Petitions" page. -->
-        <a href="/craigspetitions/search" class="btn btn-primary me-2">Search Petitions</a>
+        <a href="/craigspetitions/search" class="btn btn-secondary me-2">Search Petitions</a>
     </div>
 </header>
 <main class="container my-4">
@@ -39,7 +39,7 @@
                         <span th:text="${petition.signatures.size()}">0</span>
                     </p>
                     <!-- This button navigates the user to the detailed view of the petition. -->
-                    <a th:href="@{/viewPetition/{title}(title=${petition.title})}" class="btn btn-primary">View Petition</a>
+                    <a th:href="@{/viewPetition/{title}(title=${petition.title})}" class="btn btn-success">View Petition</a>
                 </div>
             </div>
         </div>
