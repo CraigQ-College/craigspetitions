@@ -28,14 +28,14 @@ public class CraigsPetitions {
 
     // Creating the mapping for the create petition form.
 
-    @GetMapping("createPetition")
+    @GetMapping("/createPetition")
     public String createPetitions() {
         return "createPetition";
     }
 
     // Creating the mapping for users to view petitions.
 
-    @GetMapping("viewPetition")
+    @GetMapping("/viewPetition")
     public String viewPetition() {
         return "viewPetition";
     }
