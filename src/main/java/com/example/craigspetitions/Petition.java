@@ -3,7 +3,6 @@ package com.example.craigspetitions;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Petition {
 
     private String title; // The title of the petition

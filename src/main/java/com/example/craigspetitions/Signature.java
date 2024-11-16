@@ -3,6 +3,7 @@ package com.example.craigspetitions;
 import java.time.LocalDateTime;
 
 public class Signature {
+
     private String name; // The name of the person signing
     private LocalDateTime date; // The date and time when the signature was added
 
