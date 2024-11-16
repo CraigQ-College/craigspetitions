@@ -20,7 +20,7 @@ header {
 /* Main Content */
 main {
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.9); /* Slightly opaque white background */
+    background: rgba(10, 255, 255, 0.9); /* Slightly opaque white background */
     border-radius: 8px;
     margin: 2rem auto;
     max-width: 800px; /* Centered container */
