@@ -18,7 +18,7 @@ public class CraigsPetitions {
             new Petition("Support Clean Energy", "Join the movement for a sustainable future!")
     ));
 
-    @GetMapping("/")
+    @GetMapping("/craigspetitions/")
     public String showAllPetitions(Model model) {
         model.addAttribute("petitions", petitions);
         return "allPetitions";
