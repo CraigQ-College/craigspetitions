@@ -20,7 +20,6 @@ pipeline {
             steps {
                 sh 'mvn test'
             }
-
         }
         stage ('Stage 4: Package & Archive') {
             steps {
@@ -29,7 +28,6 @@ pipeline {
                              	artifacts:'**/craigspetitions*.war'
             }
         }
-
 	    stage ('Stage 5: Deploy') {
             steps {
                 sh 'docker build -f Dockerfile -t myapp . '
