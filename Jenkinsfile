@@ -12,6 +12,8 @@ pipeline {
         stage ('Stage 2: Build the Project') {
             steps {
                 sh 'mvn clean:clean'
+                sh 'mvn dependency:copy-dependencies'
+                sh 'mvn compiler:compile'
             }
         }
         stage ('Stage 3: Package the Project') {
