@@ -23,7 +23,7 @@ public class CraigsPetitions {
         model.addAttribute("petitions", petitions);
         return "allPetitions";
     }
-    @GetMapping("/")
+    @GetMapping("/craigspetitions/createPetition")
     public String createPetition() {
         return "createPetition";
     }
