@@ -63,7 +63,25 @@ public class CraigsPetitions {
         return "redirect:/viewPetition/" + title;
     }
 
+    @GetMapping("/search")
+    public String searchPetitions() {
+        return "searchPetitions";
+    }
 
+    @GetMapping("/performSearch")
+    public String performSearch(@RequestParam String query, Model model) {
+        // Filter petitions that match the users input.
+        List<Petition> filteredPetitions = new ArrayList<>();
+        for (Petition petition : petitions) {
+            if (petition.getTitle().toLowerCase().contains(query.toLowerCase()) ||
+                    petition.getDescription().toLowerCase().contains(query.toLowerCase())) {
+                filteredPetitions.add(petition);
+            }
+        }
+        model.addAttribute("petitions", filteredPetitions);
+        model.addAttribute("query", query);
+        return "searchResults";
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(CraigsPetitions.class, args);
