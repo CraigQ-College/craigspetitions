@@ -2,42 +2,39 @@ package com.example.craigspetitions;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.*;
-
 
 import java.util.List;
 
 @SpringBootApplication
-@RestController
+@Controller
 public class CraigsPetitions {
 
-    // Creating the list top store the list of petitions
-
-    private List<Petition> petitions = List.of(
+    // In-memory list to store petitions
+    private final List<Petition> petitions = List.of(
             new Petition("Reduce Reuse Recycle", "Reduce plastic use, change to better alternatives"),
             new Petition("Support Clean Energy", "Join the movement for a sustainable future!")
     );
 
-    // Creating the mapping for all petitions. This will be the initial landing page.
-
+    // Mapping for the initial landing page (/), which shows all petitions
     @GetMapping("/")
-    public String showAllPetitions() {
-        return "allPetitions.html";
+    public String showAllPetitions(Model model) {
+        model.addAttribute("petitions", petitions); // Add the list of petitions to the model
+        return "allPetitions"; // Render allPetitions.html from the templates folder
     }
 
-    // Creating the mapping for the create petition form.
-
+    // Mapping for the create petition form (/createPetition)
     @GetMapping("/createPetition")
-    public String createPetitions() {
-        return "createPetition";
+    public String createPetitionPage() {
+        return "createPetition"; // Render createPetition.html from the templates folder
     }
 
-    // Creating the mapping for users to view petitions.
-
+    // Mapping for the view petition page (/viewPetition)
     @GetMapping("/viewPetition")
-    public String viewPetition() {
-        return "viewPetition";
+    public String viewPetitionPage() {
+        return "viewPetition"; // Render viewPetition.html from the templates folder
     }
 
     public static void main(String[] args) {
