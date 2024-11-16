@@ -4,30 +4,33 @@ pipeline {
         git 'Default'
     }
     stages {
-        stage ('Stage 1: Get the Project') {
+        stage ('Stage 1: Get the code from GitHub') {
             steps {
                 git branch:'master', url:'https://github.com/CraigQ-College/CT5171_Assignment_1.git'
             }
         }
-        stage ('Stage 2: Build the Project') {
+        stage ('Stage 2: Build') {
             steps {
                 sh 'mvn clean:clean'
                 sh 'mvn dependency:copy-dependencies'
                 sh 'mvn compiler:compile'
             }
         }
-        stage ('Stage 3: Package the Project') {
+        stage ('Stage 3: Test') {
+            steps {
+                sh 'mvn test:test'
+            }
+
+        }
+        stage ('Stage 4: Package & Archive') {
             steps {
                 sh 'mvn package'
-            }
-        }
-	stage ('Stage 4: Archive the Project') {
-            steps {
                 archiveArtifacts allowEmptyArchive: true,
-             	artifacts:'**/craigspetitions*.war'
+                             	artifacts:'**/craigspetitions*.war'
             }
         }
-	stage ('Stage 5: Deploy the Project') {
+
+	    stage ('Stage 5: Deploy') {
             steps {
                 sh 'docker build -f Dockerfile -t myapp . '
                 sh 'docker rm -f "myappcontainer" || true'

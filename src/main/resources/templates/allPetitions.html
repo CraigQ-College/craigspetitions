@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <!-- This link imports Bootstrap CSS to style the page and ensure consistent design. -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- This meta tag specifies the character encoding for the page as UTF-8. -->
     <meta charset="UTF-8">
+    <!-- This meta tag ensures the page is responsive and adapts to various screen sizes. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- This title sets the text that appears on the browser tab. -->
     <title>All Petitions</title>
 </head>
 <body>
 <header class="bg-primary text-white py-3">
+    <!-- This container centers the header content and applies padding and text styles. -->
     <div class="container text-center">
+        <!-- This heading displays the title of the page: "All Petitions". -->
         <h1>All Petitions</h1>
+        <!-- This button navigates the user to the "Create New Petition" page. -->
         <a href="/craigspetitions/createPetition" class="btn btn-success me-2">Create New Petition</a>
+        <!-- This button navigates the user to the "Search Petitions" page. -->
         <a href="/craigspetitions/search" class="btn btn-primary me-2">Search Petitions</a>
     </div>
 </header>
 <main class="container my-4">
-    <!-- Petition Cards -->
+    <!-- This section displays a grid layout for the petition cards. -->
     <div class="row row-cols-1 row-cols-md-2 g-4">
-        <!-- Loop through the petitions -->
+        <!-- This loop iterates through the list of petitions and creates a card for each petition. -->
         <div class="col" th:each="petition : ${petitions}">
+            <!-- This div represents a card component for displaying petition details. -->
             <div class="card shadow-sm">
+                <!-- This section represents the main content area of the card. -->
                 <div class="card-body">
+                    <!-- This heading displays the title of the petition dynamically. -->
                     <h5 class="card-title" th:text="${petition.title}">Petition Title</h5>
+                    <!-- This paragraph displays the description of the petition dynamically. -->
                     <p class="card-text" th:text="${petition.description}">Petition Description</p>
+                    <!-- This paragraph shows the count of signatures for the petition dynamically. -->
                     <p class="text-muted">
                         <strong>Signatures:</strong>
                         <span th:text="${petition.signatures.size()}">0</span>
                     </p>
+                    <!-- This button navigates the user to the detailed view of the petition. -->
                     <a th:href="@{/viewPetition/{title}(title=${petition.title})}" class="btn btn-primary">View Petition</a>
                 </div>
             </div>
