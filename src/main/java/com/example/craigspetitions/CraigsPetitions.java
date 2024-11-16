@@ -34,7 +34,7 @@ public class CraigsPetitions {
         // Add the new petition to the list
         petitions.add(new Petition(title, description));
         // Redirect to the home screen
-        return "redirect:/craigspetitions/";
+        return "redirect:/";
     }
 
     @GetMapping("/viewPetition/{title}")
