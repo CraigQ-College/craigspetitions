@@ -22,7 +22,7 @@ pipeline {
 	stage ('Stage 4: Archive the Project') {
             steps {
                 archiveArtifacts allowEmptyArchive: true,
-             	artifacts:'**/demo*.war'
+             	artifacts:'**/craigspetitions*.war'
             }
         }
 	stage ('Stage 5: Deploy the Project') {
