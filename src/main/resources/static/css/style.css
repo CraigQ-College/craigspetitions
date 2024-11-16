@@ -1,0 +1,66 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+/* Header */
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Main Content */
+main {
+    padding: 1rem;
+}
+
+/* Petition List */
+.petition-list {
+    list-style: none;
+    padding: 0;
+}
+
+.petition-item {
+    background: white;
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.petition-item h3 {
+    margin: 0 0 0.5rem;
+}
+
+.petition-item p {
+    margin: 0.5rem 0 0;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    color: white;
+    background-color: #007BFF;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.create-btn {
+    background-color: #28a745;
+}
+
+.create-btn:hover {
+    background-color: #218838;
+}
