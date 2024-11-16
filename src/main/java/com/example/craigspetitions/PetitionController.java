@@ -1,11 +1,13 @@
 package com.example.craigspetitions;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@SpringBootApplication
 @RestController
 public class PetitionController {
 
