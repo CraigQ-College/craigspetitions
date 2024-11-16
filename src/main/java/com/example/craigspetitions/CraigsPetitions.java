@@ -37,7 +37,7 @@ public class CraigsPetitions {
         return "redirect:/";
     }
 
-    @GetMapping("/viewPetition/{title}")
+    @GetMapping("/craigspetitions/viewPetition/{title}")
     public String viewPetition(@PathVariable String title, Model model) {
         Petition petition = petitions.stream()
                 .filter(p -> p.getTitle().equals(title))
@@ -47,13 +47,13 @@ public class CraigsPetitions {
         return "viewPetition";
     }
 
-    @GetMapping("/signPetition/{title}")
+    @GetMapping("/craigspetitions/signPetition/{title}")
     public String signPetition(@PathVariable String title, Model model) {
         model.addAttribute("title", title);
         return "signPetition";
     }
 
-    @PostMapping("/submitSignature")
+    @PostMapping("/craigspetitions/submitSignature")
     public String submitSignature(@RequestParam String title, @RequestParam String name) {
         Petition petition = petitions.stream()
                 .filter(p -> p.getTitle().equals(title))
