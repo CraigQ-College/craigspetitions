@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage ('Stage 1: Get the code from GitHub') {
             steps {
-                git branch:'master', url:'https://github.com/CraigQ-College/CT5171_Assignment_1.git'
+                git branch:'master', url:'https://github.com/CraigQ-College/craigspetitions.git'
             }
         }
         stage ('Stage 2: Build') {
