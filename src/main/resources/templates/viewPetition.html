@@ -22,7 +22,7 @@
 
   <form action="/addSignature" method="POST" class="mt-4">
     <div class="mb-3">
-      <label for="name" class="form-label">Your Name</label>
+      <label for="name" class="form-label">Your Name & (Email)</label>
       <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name and email" required>
     </div>
     <input type="hidden" name="title" th:value="${petition.title}">
