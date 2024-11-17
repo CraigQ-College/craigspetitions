@@ -23,11 +23,7 @@
   <form action="/addSignature" method="POST" class="mt-4">
     <div class="mb-3">
       <label for="name" class="form-label">Your Name</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
-    </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">Your Email</label>
-      <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name and email" required>
     </div>
     <input type="hidden" name="title" th:value="${petition.title}">
     <button type="submit" class="btn btn-success">Sign Petition</button>
