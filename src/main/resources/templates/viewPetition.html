@@ -35,6 +35,10 @@
       <label for="name" class="form-label">Your Name</label>
       <!-- This input field collects the user's name to add as a signature. -->
       <input type="text" class="form-control" id="name" name="name" required>
+      <!-- This label identifies the input field for entering the user's name. -->
+      <label for="email" class="form-label">Your Email</label>
+      <!-- This input field collects the user's name to add as a signature. -->
+      <input type="email" class="form-control" id="email" name="email" required>
       <!-- This hidden input field passes the petition title to the backend to associate the signature with the correct petition. -->
       <input type="hidden" name="title" th:value="${petition.title}">
     </div>

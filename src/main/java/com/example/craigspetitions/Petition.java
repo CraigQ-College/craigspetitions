@@ -7,7 +7,7 @@ public class Petition {
 
     private String title; // The title of the petition
     private String description; // The description of the petition
-    private List<String> signatures = new ArrayList<>(); // List of signatures for the petition
+    private List<String> signatures = new ArrayList<String>(); // List of signatures for the petition
 
     // Constructor to initialize a petition with a title and description
     public Petition(String title, String description) {
@@ -31,7 +31,8 @@ public class Petition {
     }
 
     // Adds a signature to the petition
-    public void addSignature(String name) {
+    public void addSignature(String name, String email) {
         signatures.add(name);
+        signatures.add(email);
     }
 }

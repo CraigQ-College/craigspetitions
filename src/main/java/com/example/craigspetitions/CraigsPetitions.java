@@ -72,10 +72,10 @@ public class CraigsPetitions {
      * It then redirects back to the detailed view of the petition after adding the signature.
      */
     @PostMapping("/addSignature")
-    public String addSignature(@RequestParam String title, @RequestParam String name) {
+    public String addSignature(@RequestParam String title, @RequestParam String name, @RequestParam String email) {
         for (Petition petition : petitions) {
             if (petition.getTitle().equalsIgnoreCase(title)) {
-                petition.addSignature(name);
+                petition.addSignature(name, email);
                 break;
             }
         }
