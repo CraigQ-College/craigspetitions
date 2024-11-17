@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+  <!-- This link imports Bootstrap CSS to style the page and ensure consistent design. -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- This meta tag sets the character encoding to UTF-8 for proper text rendering. -->
   <meta charset="UTF-8">
+  <!-- This title sets the text displayed on the browser tab for this page. -->
   <title>View Petition</title>
 </head>
 <body>
 <header class="bg-black text-white text-center py-3">
+  <!-- This header displays the petition's title dynamically with a blue background and centered text. -->
   <h1 th:text="${petition.title}">Petition Title</h1>
 </header>
 <main class="container my-4">
+  <!-- This paragraph displays the description of the petition dynamically as lead text. -->
   <p class="lead" th:text="${petition.description}">Petition Description</p>
 
+  <!-- This section lists the signatures associated with the petition. -->
   <h3>Signatures</h3>
   <ul class="list-group">
-    <!-- Display both name and email in the signatures list -->
-    <li th:each="signature : ${petition.signatures}" class="list-group-item">
-      <span th:text="${signature.name}">Name</span> -
-      <span th:text="${signature.email}">Email</span>
+    <!-- This loop iterates through the signatures list and displays each signature as a list item. -->
+    <li th:each="signature : ${petition.signatures}" class="list-group-item" th:text="${signature}">
+      Signature Name
     </li>
   </ul>
 
-  <form action="/addSignature" method="POST" class="mt-4">
+  <!-- This form allows users to add their signature to the petition. -->
+  <form action="/craigspetitions/addSignature" method="POST" class="mt-4">
     <div class="mb-3">
+      <!-- This label identifies the input field for entering the user's name. -->
       <label for="name" class="form-label">Your Name</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+      <!-- This input field collects the user's name to add as a signature. -->
+      <input type="text" class="form-control" id="name" name="name" required>
+      <!-- This hidden input field passes the petition title to the backend to associate the signature with the correct petition. -->
+      <input type="hidden" name="title" th:value="${petition.title}">
     </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">Your Email</label>
-      <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-    </div>
-    <input type="hidden" name="title" th:value="${petition.title}">
+    <!-- This button submits the form to add the user's signature. -->
     <button type="submit" class="btn btn-success">Sign Petition</button>
   </form>
 
-  <a href="/" class="btn btn-secondary mt-3">Back to All Petitions</a>
+  <!-- This link navigates the user back to the main page displaying all petitions. -->
+  <a href="/craigspetitions/" class="btn btn-secondary mt-3">Back to All Petitions</a>
 </main>
 </body>
 </html>
