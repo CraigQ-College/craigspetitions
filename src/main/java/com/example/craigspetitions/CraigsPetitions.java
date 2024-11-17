@@ -11,7 +11,6 @@ import java.util.List;
 
 @SpringBootApplication
 @Controller
-
 public class CraigsPetitions {
 
     /**
@@ -72,16 +71,15 @@ public class CraigsPetitions {
      * It then redirects back to the detailed view of the petition after adding the signature.
      */
     @PostMapping("/addSignature")
-    public String addSignature(@RequestParam String title, @RequestParam String name, @RequestParam String email) {
+    public String addSignature(@RequestParam String title, @RequestParam String name) {
         for (Petition petition : petitions) {
             if (petition.getTitle().equalsIgnoreCase(title)) {
-                petition.addSignature(name + " (" + email + ")");
+                petition.addSignature(name);
                 break;
             }
         }
         return "redirect:/viewPetition/" + title;
     }
-
 
     /**
      * This function displays the search page where users can enter a query to search for petitions.
