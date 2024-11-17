@@ -75,12 +75,13 @@ public class CraigsPetitions {
     public String addSignature(@RequestParam String title, @RequestParam String name, @RequestParam String email) {
         for (Petition petition : petitions) {
             if (petition.getTitle().equalsIgnoreCase(title)) {
-                petition.addSignature(name, email);
+                petition.addSignature(name + " (" + email + ")");
                 break;
             }
         }
         return "redirect:/viewPetition/" + title;
     }
+
 
     /**
      * This function displays the search page where users can enter a query to search for petitions.

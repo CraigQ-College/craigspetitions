@@ -31,8 +31,8 @@ public class Petition {
     }
 
     // Adds a signature to the petition
-    public void addSignature(String name, String email) {
-        signatures.add(name);
-        signatures.add(email);
+    public void addSignature(String signature) {
+        signatures.add(signature);
     }
+
 }
